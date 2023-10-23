@@ -11,6 +11,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.concurrent.TimeUnit;
+
+
 public class saucedemo {
     WebDriver driver;
     @Given("User is on the SauceDemo login page")
@@ -180,6 +183,8 @@ public class saucedemo {
     public void userClicksOnTheLogoutButton() {
         WebElement menu = driver.findElement(By.xpath("//button[@id='react-burger-menu-btn']"));
         menu.click();
+
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         WebElement logout = driver.findElement(By.xpath("//a[@id='logout_sidebar_link']"));
         logout.click();
